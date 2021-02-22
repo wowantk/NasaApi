@@ -37,10 +37,10 @@ extension ViewRepController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         fvc?.url = repArr[indexPath.row]
+        self.dismiss(animated: true, completion: nil)
         DispatchQueue.main.async {
             self.fvc?.tablleView.reloadData()
         }
-        
     }
 }
 

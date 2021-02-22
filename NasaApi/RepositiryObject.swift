@@ -12,13 +12,13 @@ struct ReposisotiryObject: Codable {
     var photos: [Photo]
     
     
-    static func performRequest(rover:String,camera:String,date:String,url:String?,completion: @escaping (_ isSuccess: Bool, _ response: [Photo]) -> ()) {
+    static func performRequest(rover:String,camera:String,date:String,url:String?,page: Int = 1,completion: @escaping (_ isSuccess: Bool, _ response: [Photo]) -> ()) {
         var repStringURL = ""
         if camera != "All"{
-            repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&camera=\(camera)&page=1&earth_date=\(date)"
+            repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&camera=\(camera)&page=\(page)&earth_date=\(date)"
 
         }else{
-            repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&page=1&earth_date=\(date)"
+            repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&page=\(page)&earth_date=\(date)"
         }
         if url != nil {
             repStringURL = url!

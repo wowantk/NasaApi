@@ -17,7 +17,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var roverField: UITextField!
     @IBOutlet weak var cameraField: UITextField!
     @IBOutlet weak var dateField: UITextField!
-    
    
     
     @IBOutlet weak var roverLabel: UILabel!
@@ -29,6 +28,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     private var camera = "FHAZ"
     private var date = "2019-01-01"
      var url:String?
+    private var requestPage = 1
     
     private var refreshController:UIRefreshControl?
     
@@ -42,6 +42,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     private let rollerArr = ["Curiosity","Opportunity","Spirit"]
     
+    let spinner = UIActivityIndicatorView(style: .medium)
     private var chosenPickerVariable: choosenPicker? {
             if self.roverField.isEditing {
                 cameraLabel.text = ""
@@ -59,6 +60,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         spinner.color = UIColor.darkGray
+         spinner.hidesWhenStopped = true
+         tablleView.tableFooterView = spinner
         
         
         tablleView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
@@ -163,6 +168,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     @objc private func saveDate() {
+        self.dataSource = [Photo]()
+        self.requestPage = 1
         if roverLabel.text != nil {
             cameraField.isUserInteractionEnabled = true
             dateField.isUserInteractionEnabled = true
@@ -190,7 +197,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     
     @objc private func saveCameraDate() {
-        
+        self.dataSource = [Photo]()
+        self.requestPage = 1
         if dateLabel.text != nil {
             rover = roverLabel.text ?? ""
             camera = cameraLabel.text ?? ""
@@ -208,6 +216,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     @objc private func dateSaveDate() {
+        self.dataSource = [Photo]()
+        self.requestPage = 1
         guard let date = datePicker?.date else {return}
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "yyyy-MM-dd"
@@ -239,11 +249,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     @objc private func getAllData(){
-        ReposisotiryObject.performRequest(rover: rover, camera: camera, date: date, url:url) { [weak self] (isSucces, response) in
+        ReposisotiryObject.performRequest(rover: rover, camera: camera, date: date, url:url,page: requestPage) { [weak self] (isSucces, response) in
             guard let self  = self else {return}
             if isSucces{
-                self.dataSource = response
-                print(response)
+                self.dataSource += response
                 DispatchQueue.main.async {
                     self.tablleView.reloadData()
                     self.refreshController?.endRefreshing()
@@ -345,6 +354,16 @@ extension ViewController{
                return 150
         
            }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            if indexPath.row + 1 == (25 * self.requestPage) {
+                self.requestPage += 1
+                print(self.requestPage)
+                self.spinner.startAnimating()
+                getAllData()
+                self.spinner.stopAnimating()
+            }
+        }
     
 }
 
