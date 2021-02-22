@@ -15,12 +15,12 @@ class TableViewResponseCell: UITableViewCell {
     func setModel(with rep:String){
         self.labelRespons.text = rep
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

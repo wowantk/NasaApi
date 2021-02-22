@@ -17,18 +17,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var roverField: UITextField!
     @IBOutlet weak var cameraField: UITextField!
     @IBOutlet weak var dateField: UITextField!
-   
+    
     
     @IBOutlet weak var roverLabel: UILabel!
     @IBOutlet weak var cameraLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-   
+    
     private var rover = "curiosity"
     private var camera = "FHAZ"
     private var date = "2019-01-01"
-     var url:String?
-    private var requestPage = 1
+    var url:String?
+    var requestPage = 1
     
     private var refreshController:UIRefreshControl?
     
@@ -44,26 +44,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     let spinner = UIActivityIndicatorView(style: .medium)
     private var chosenPickerVariable: choosenPicker? {
-            if self.roverField.isEditing {
-                cameraLabel.text = ""
-                dateLabel.text = ""
-                return .rower }
-            else if self.cameraField.isEditing {
-                
-                return  .camera }
-            else {
-                
-                return .date }
-        }
+        if self.roverField.isEditing {
+            cameraLabel.text = ""
+            dateLabel.text = ""
+            return .rower }
+        else if self.cameraField.isEditing {
+            
+            return  .camera }
+        else {
+            
+            return .date }
+    }
     
     private var dataSource = [Photo]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         spinner.color = UIColor.darkGray
-         spinner.hidesWhenStopped = true
-         tablleView.tableFooterView = spinner
+        spinner.color = UIColor.darkGray
+        spinner.hidesWhenStopped = true
+        tablleView.tableFooterView = spinner
         
         
         tablleView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
@@ -73,7 +73,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         dataPicker?.sizeToFit()
         dataPicker?.delegate = self
         dataPicker?.dataSource = self
-       
+        
         roverField.layer.borderColor = UIColor.red.cgColor
         roverField.layer.borderWidth = 1
         roverField.layer.cornerRadius = 5
@@ -81,7 +81,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         addRightImageTo(txtField: roverField, andImage: detailImage!)
         
-       
+        
         
         
         
@@ -116,11 +116,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         
         refreshController = UIRefreshControl()
-       refreshController?.addTarget(self, action: #selector(getAllData), for: .valueChanged)
-       
+        refreshController?.addTarget(self, action: #selector(getAllData), for: .valueChanged)
+        
         tablleView.refreshControl = self.refreshController
         
-      
+        
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -149,22 +149,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         roverField.inputAccessoryView = toolbar
         dateField.inputAccessoryView = dateToolBar
         
-
+        
         refreshController?.beginRefreshing()
         
         
-            self.getAllData()
+        self.getAllData()
     }
     
     
     
     func addRightImageTo(txtField: UITextField, andImage img: UIImage) {
-            let leftImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 30, height: 30))
-            leftImageView.image = img
-            txtField.rightView = leftImageView
-            txtField.rightViewMode = .always
-        }
-
+        let leftImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 30, height: 30))
+        leftImageView.image = img
+        txtField.rightView = leftImageView
+        txtField.rightViewMode = .always
+    }
+    
     
     
     @objc private func saveDate() {
@@ -180,7 +180,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     
-  
+    
     
     
     @objc private func cancelButtonTapped() {
@@ -194,7 +194,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "yyyy-MM-dd"
         dateLabel.text  = formatter1.string(from: date)
-        }
+    }
     
     @objc private func saveCameraDate() {
         self.dataSource = [Photo]()
@@ -209,7 +209,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
             cameraField.resignFirstResponder()
         }
-    
+        
         
     }
     
@@ -252,7 +252,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         ReposisotiryObject.performRequest(rover: rover, camera: camera, date: date, url:url,page: requestPage) { [weak self] (isSucces, response) in
             guard let self  = self else {return}
             if isSucces{
-                self.dataSource += response
+                self.dataSource = response
+                if self.requestPage > 1 {
+                    self.dataSource.append(contentsOf: response)
+                }
                 DispatchQueue.main.async {
                     self.tablleView.reloadData()
                     self.refreshController?.endRefreshing()
@@ -263,12 +266,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         
     }
-        
     
     
     
     
-
+    
+    
 }
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -279,7 +282,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch chosenPickerVariable {
         case .rower:
-           return rollerArr.count
+            return rollerArr.count
         case .camera:
             switch self.roverLabel.text {
             case "Curiosity":
@@ -291,10 +294,11 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             default:
                 return 0
             }
-
+            
         default:
             return 0
         }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -307,7 +311,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             case "Opportunity": return InfoPicker.setValue(raw: "Opportunity")[row]
             case  "Spirit": return InfoPicker.setValue(raw: "Spirit")[row]
             default:
-                 print("error")
+                print("error")
             }
         default:
             print("error")
@@ -331,7 +335,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
                 print("error")
             }
         default:
-               print("error")
+            print("error")
         }
     }
 }
@@ -344,26 +348,33 @@ extension ViewController{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-                        
-        cell.setRepositoryModel(with: dataSource[indexPath.row])
-        //dataSource[indexPath.row].putObjectToUserDefaults()
-        return cell
-           }
-           
-           func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-               return 150
         
-           }
+        cell.setRepositoryModel(with: dataSource[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tablleView.deselectRow(at: indexPath, animated: true)
+        let vc = ImageViewController.createFromStoryboard()
+        vc.selectedImageURL = self.dataSource[indexPath.row].imagePath
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-            if indexPath.row + 1 == (25 * self.requestPage) {
-                self.requestPage += 1
-                print(self.requestPage)
-                self.spinner.startAnimating()
-                getAllData()
-                self.spinner.stopAnimating()
-            }
+        if indexPath.row + 1 == (25 * self.requestPage) {
+            self.requestPage += 1
+            print(self.requestPage)
+            self.spinner.startAnimating()
+            getAllData()
+            self.spinner.stopAnimating()
         }
+    }
     
 }
 

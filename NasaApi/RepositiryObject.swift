@@ -16,47 +16,50 @@ struct ReposisotiryObject: Codable {
         var repStringURL = ""
         if camera != "All"{
             repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&camera=\(camera)&page=\(page)&earth_date=\(date)"
-
+            
+            repArr.append(repStringURL)
+            
         }else{
             repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&page=\(page)&earth_date=\(date)"
+            repArr.append(repStringURL)
         }
         if url != nil {
             repStringURL = url!
         }
-           
-        repArr.append(repStringURL)
+        
+        
         guard let repURL = URL(string: repStringURL) else {return}
         
-    
-      URLSession.shared.dataTask(with: repURL) { (data, response, error) in
-        var result = [Photo]()
-        guard data != nil else {
-          print("NO DATA")
-          completion(false, result)
-          return
-        }
         
-        guard error == nil else {
-          print(error!.localizedDescription)
-          completion(false, result)
-          return
-        }
-        
-        do {
-         
-          result =  try JSONDecoder().decode(ReposisotiryObject.self, from: data!).photos
+        URLSession.shared.dataTask(with: repURL) { (data, response, error) in
+            var result = [Photo]()
+            guard data != nil else {
+                print("NO DATA")
+                completion(false, result)
+                return
+            }
             
-            completion(true, result)
-        } catch {
-          print(error.localizedDescription)
-          completion(false, result)
-        }
-      }.resume()
-}
+            guard error == nil else {
+                print(error!.localizedDescription)
+                completion(false, result)
+                return
+            }
+            
+            do {
+                
+                result =  try JSONDecoder().decode(ReposisotiryObject.self, from: data!).photos
+                
+                completion(true, result)
+            } catch {
+                print(error.localizedDescription)
+                completion(false, result)
+            }
+        }.resume()
+    }
     
     
     
-
+    
 }
 
 struct Photo: Codable {
@@ -78,16 +81,16 @@ struct Photo: Codable {
     }
     
     private func putObjArrayToUserDefaults(_ array: [Photo]) {
-      UserDefaults.standard.setValue(try? PropertyListEncoder().encode(array), forKey: "favorites")
+        UserDefaults.standard.setValue(try? PropertyListEncoder().encode(array), forKey: "favorites")
     }
-
+    
     enum CodingKeys: String, CodingKey {
         case camera,rover
         case imagePath = "img_src"
         case date = "earth_date"
     }
     
-   
+    
 }
 
 struct Camera: Codable {
@@ -103,10 +106,6 @@ struct Camera: Codable {
 struct Rover: Codable {
     var name: String
 }
-
-
-
-
 
 enum choosenPicker {
     case rower

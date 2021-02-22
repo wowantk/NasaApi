@@ -21,6 +21,10 @@
 		FA57EDCC25E2C9F700369523 /* TableViewResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDCA25E2C9F700369523 /* TableViewResponseCell.swift */; };
 		FA57EDCD25E2C9F700369523 /* TableViewResponseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57EDCB25E2C9F700369523 /* TableViewResponseCell.xib */; };
 		FA57EDD125E2CE5800369523 /* ViewRepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDD025E2CE5800369523 /* ViewRepController.swift */; };
+		FA57EDD425E44DB500369523 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDD325E44DB400369523 /* ImageScrollView.swift */; };
+		FA57EDD725E44FFE00369523 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDD625E44FFE00369523 /* ImageViewController.swift */; };
+		FA57EDDA25E4597700369523 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDD925E4597700369523 /* Init.swift */; };
+		FA57EDDD25E45A6F00369523 /* Scroll.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA57EDDC25E45A6F00369523 /* Scroll.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		FA57EDCA25E2C9F700369523 /* TableViewResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewResponseCell.swift; sourceTree = "<group>"; };
 		FA57EDCB25E2C9F700369523 /* TableViewResponseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewResponseCell.xib; sourceTree = "<group>"; };
 		FA57EDD025E2CE5800369523 /* ViewRepController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRepController.swift; path = NasaApi/ViewRepController.swift; sourceTree = SOURCE_ROOT; };
+		FA57EDD325E44DB400369523 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		FA57EDD625E44FFE00369523 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		FA57EDD925E4597700369523 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
+		FA57EDDC25E45A6F00369523 /* Scroll.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scroll.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,13 +102,12 @@
 		FA57ED8F25DD809F00369523 /* NasaApi */ = {
 			isa = PBXGroup;
 			children = (
+				FA57EDE125E46FCE00369523 /* storyaboard */,
 				FA57EDC425E29A9D00369523 /* VC */,
 				FA57EDAC25E0790100369523 /* TableViewCell */,
 				FA57ED9025DD809F00369523 /* AppDelegate.swift */,
 				FA57ED9225DD809F00369523 /* SceneDelegate.swift */,
-				FA57ED9625DD809F00369523 /* Main.storyboard */,
 				FA57ED9925DD80A000369523 /* Assets.xcassets */,
-				FA57ED9B25DD80A000369523 /* LaunchScreen.storyboard */,
 				FA57ED9E25DD80A000369523 /* Info.plist */,
 				FA57EDA925DE7FC500369523 /* InfoPicker.swift */,
 				FA57EDA525DDB80400369523 /* RepositiryObject.swift */,
@@ -111,6 +118,8 @@
 		FA57EDAC25E0790100369523 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				FA57EDCA25E2C9F700369523 /* TableViewResponseCell.swift */,
+				FA57EDCB25E2C9F700369523 /* TableViewResponseCell.xib */,
 				FA57EDBC25E1A4FC00369523 /* TableViewCell.swift */,
 				FA57EDBD25E1A4FC00369523 /* TableViewCell.xib */,
 			);
@@ -121,11 +130,22 @@
 			isa = PBXGroup;
 			children = (
 				FA57EDD025E2CE5800369523 /* ViewRepController.swift */,
-				FA57EDCA25E2C9F700369523 /* TableViewResponseCell.swift */,
-				FA57EDCB25E2C9F700369523 /* TableViewResponseCell.xib */,
 				FA57ED9425DD809F00369523 /* ViewController.swift */,
+				FA57EDD325E44DB400369523 /* ImageScrollView.swift */,
+				FA57EDD625E44FFE00369523 /* ImageViewController.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		FA57EDE125E46FCE00369523 /* storyaboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA57EDD925E4597700369523 /* Init.swift */,
+				FA57ED9B25DD80A000369523 /* LaunchScreen.storyboard */,
+				FA57ED9625DD809F00369523 /* Main.storyboard */,
+				FA57EDDC25E45A6F00369523 /* Scroll.storyboard */,
+			);
+			path = storyaboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +209,7 @@
 			files = (
 				FA57ED9D25DD80A000369523 /* LaunchScreen.storyboard in Resources */,
 				FA57EDBF25E1A4FC00369523 /* TableViewCell.xib in Resources */,
+				FA57EDDD25E45A6F00369523 /* Scroll.storyboard in Resources */,
 				FA57ED9A25DD80A000369523 /* Assets.xcassets in Resources */,
 				FA57EDCD25E2C9F700369523 /* TableViewResponseCell.xib in Resources */,
 				FA57ED9825DD809F00369523 /* Main.storyboard in Resources */,
@@ -246,11 +267,14 @@
 			files = (
 				FA57EDD125E2CE5800369523 /* ViewRepController.swift in Sources */,
 				FA57EDCC25E2C9F700369523 /* TableViewResponseCell.swift in Sources */,
+				FA57EDD725E44FFE00369523 /* ImageViewController.swift in Sources */,
 				FA57ED9525DD809F00369523 /* ViewController.swift in Sources */,
+				FA57EDD425E44DB500369523 /* ImageScrollView.swift in Sources */,
 				FA57ED9125DD809F00369523 /* AppDelegate.swift in Sources */,
 				FA57EDA625DDB80400369523 /* RepositiryObject.swift in Sources */,
 				FA57EDBE25E1A4FC00369523 /* TableViewCell.swift in Sources */,
 				FA57ED9325DD809F00369523 /* SceneDelegate.swift in Sources */,
+				FA57EDDA25E4597700369523 /* Init.swift in Sources */,
 				FA57EDAA25DE7FC500369523 /* InfoPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
