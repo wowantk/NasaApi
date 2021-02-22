@@ -19,7 +19,7 @@ class TableViewCell: UITableViewCell {
     
          func setRepositoryModel(with model:Photo){
             
-           
+            model.putObjectToUserDefaults()
             
             self.roverLabel.text? = model.rover.name
             self.cameraLabel.text? = model.camera.fullName
