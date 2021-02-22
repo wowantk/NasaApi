@@ -3,19 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E17F6E8989679AA58D7EA83 /* Pods_NasaApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46305E1BA6017BD4D50A2161 /* Pods_NasaApi.framework */; };
 		FA57ED9125DD809F00369523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57ED9025DD809F00369523 /* AppDelegate.swift */; };
 		FA57ED9325DD809F00369523 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57ED9225DD809F00369523 /* SceneDelegate.swift */; };
 		FA57ED9525DD809F00369523 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57ED9425DD809F00369523 /* ViewController.swift */; };
 		FA57ED9825DD809F00369523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA57ED9625DD809F00369523 /* Main.storyboard */; };
 		FA57ED9A25DD80A000369523 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA57ED9925DD80A000369523 /* Assets.xcassets */; };
 		FA57ED9D25DD80A000369523 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA57ED9B25DD80A000369523 /* LaunchScreen.storyboard */; };
+		FA57EDA625DDB80400369523 /* RepositiryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDA525DDB80400369523 /* RepositiryObject.swift */; };
+		FA57EDAA25DE7FC500369523 /* InfoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDA925DE7FC500369523 /* InfoPicker.swift */; };
+		FA57EDBE25E1A4FC00369523 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDBC25E1A4FC00369523 /* TableViewCell.swift */; };
+		FA57EDBF25E1A4FC00369523 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57EDBD25E1A4FC00369523 /* TableViewCell.xib */; };
+		FA57EDCC25E2C9F700369523 /* TableViewResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDCA25E2C9F700369523 /* TableViewResponseCell.swift */; };
+		FA57EDCD25E2C9F700369523 /* TableViewResponseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA57EDCB25E2C9F700369523 /* TableViewResponseCell.xib */; };
+		FA57EDD125E2CE5800369523 /* ViewRepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57EDD025E2CE5800369523 /* ViewRepController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46305E1BA6017BD4D50A2161 /* Pods_NasaApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NasaApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ACF7953F065A488713D15F3 /* Pods-NasaApi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaApi.debug.xcconfig"; path = "Target Support Files/Pods-NasaApi/Pods-NasaApi.debug.xcconfig"; sourceTree = "<group>"; };
+		8A2E56F3A1D10E6208ABADD9 /* Pods-NasaApi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaApi.release.xcconfig"; path = "Target Support Files/Pods-NasaApi/Pods-NasaApi.release.xcconfig"; sourceTree = "<group>"; };
 		FA57ED8D25DD809F00369523 /* NasaApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA57ED9025DD809F00369523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA57ED9225DD809F00369523 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +35,13 @@
 		FA57ED9925DD80A000369523 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA57ED9C25DD80A000369523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA57ED9E25DD80A000369523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA57EDA525DDB80400369523 /* RepositiryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositiryObject.swift; sourceTree = "<group>"; };
+		FA57EDA925DE7FC500369523 /* InfoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPicker.swift; sourceTree = "<group>"; };
+		FA57EDBC25E1A4FC00369523 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FA57EDBD25E1A4FC00369523 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		FA57EDCA25E2C9F700369523 /* TableViewResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewResponseCell.swift; sourceTree = "<group>"; };
+		FA57EDCB25E2C9F700369523 /* TableViewResponseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewResponseCell.xib; sourceTree = "<group>"; };
+		FA57EDD025E2CE5800369523 /* ViewRepController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRepController.swift; path = NasaApi/ViewRepController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E17F6E8989679AA58D7EA83 /* Pods_NasaApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9135429B6963AF2DDDE570DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46305E1BA6017BD4D50A2161 /* Pods_NasaApi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD14488947D5260E4EB69E40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4ACF7953F065A488713D15F3 /* Pods-NasaApi.debug.xcconfig */,
+				8A2E56F3A1D10E6208ABADD9 /* Pods-NasaApi.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FA57ED8425DD809F00369523 = {
 			isa = PBXGroup;
 			children = (
 				FA57ED8F25DD809F00369523 /* NasaApi */,
 				FA57ED8E25DD809F00369523 /* Products */,
+				CD14488947D5260E4EB69E40 /* Pods */,
+				9135429B6963AF2DDDE570DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +94,38 @@
 		FA57ED8F25DD809F00369523 /* NasaApi */ = {
 			isa = PBXGroup;
 			children = (
+				FA57EDC425E29A9D00369523 /* VC */,
+				FA57EDAC25E0790100369523 /* TableViewCell */,
 				FA57ED9025DD809F00369523 /* AppDelegate.swift */,
 				FA57ED9225DD809F00369523 /* SceneDelegate.swift */,
-				FA57ED9425DD809F00369523 /* ViewController.swift */,
 				FA57ED9625DD809F00369523 /* Main.storyboard */,
 				FA57ED9925DD80A000369523 /* Assets.xcassets */,
 				FA57ED9B25DD80A000369523 /* LaunchScreen.storyboard */,
 				FA57ED9E25DD80A000369523 /* Info.plist */,
+				FA57EDA925DE7FC500369523 /* InfoPicker.swift */,
+				FA57EDA525DDB80400369523 /* RepositiryObject.swift */,
 			);
 			path = NasaApi;
+			sourceTree = "<group>";
+		};
+		FA57EDAC25E0790100369523 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA57EDBC25E1A4FC00369523 /* TableViewCell.swift */,
+				FA57EDBD25E1A4FC00369523 /* TableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		FA57EDC425E29A9D00369523 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				FA57EDD025E2CE5800369523 /* ViewRepController.swift */,
+				FA57EDCA25E2C9F700369523 /* TableViewResponseCell.swift */,
+				FA57EDCB25E2C9F700369523 /* TableViewResponseCell.xib */,
+				FA57ED9425DD809F00369523 /* ViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA57EDA125DD80A000369523 /* Build configuration list for PBXNativeTarget "NasaApi" */;
 			buildPhases = (
+				658B82644CD7998F192A4F6A /* [CP] Check Pods Manifest.lock */,
 				FA57ED8925DD809F00369523 /* Sources */,
 				FA57ED8A25DD809F00369523 /* Frameworks */,
 				FA57ED8B25DD809F00369523 /* Resources */,
+				E18B70ABB5E6072458B36162 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,21 +188,70 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA57ED9D25DD80A000369523 /* LaunchScreen.storyboard in Resources */,
+				FA57EDBF25E1A4FC00369523 /* TableViewCell.xib in Resources */,
 				FA57ED9A25DD80A000369523 /* Assets.xcassets in Resources */,
+				FA57EDCD25E2C9F700369523 /* TableViewResponseCell.xib in Resources */,
 				FA57ED9825DD809F00369523 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		658B82644CD7998F192A4F6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NasaApi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E18B70ABB5E6072458B36162 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NasaApi/Pods-NasaApi-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NasaApi/Pods-NasaApi-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NasaApi/Pods-NasaApi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FA57ED8925DD809F00369523 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA57EDD125E2CE5800369523 /* ViewRepController.swift in Sources */,
+				FA57EDCC25E2C9F700369523 /* TableViewResponseCell.swift in Sources */,
 				FA57ED9525DD809F00369523 /* ViewController.swift in Sources */,
 				FA57ED9125DD809F00369523 /* AppDelegate.swift in Sources */,
+				FA57EDA625DDB80400369523 /* RepositiryObject.swift in Sources */,
+				FA57EDBE25E1A4FC00369523 /* TableViewCell.swift in Sources */,
 				FA57ED9325DD809F00369523 /* SceneDelegate.swift in Sources */,
+				FA57EDAA25DE7FC500369523 /* InfoPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +395,7 @@
 		};
 		FA57EDA225DD80A000369523 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ACF7953F065A488713D15F3 /* Pods-NasaApi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +415,7 @@
 		};
 		FA57EDA325DD80A000369523 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A2E56F3A1D10E6208ABADD9 /* Pods-NasaApi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
