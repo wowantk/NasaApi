@@ -17,11 +17,17 @@ struct ReposisotiryObject: Codable {
         if camera != "All"{
             repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&camera=\(camera)&page=\(page)&earth_date=\(date)"
             
-            repArr.append(repStringURL)
+            if repArr.contains(repStringURL) == false {
+                repArr.append(repStringURL)
+            }
             
         }else{
             repStringURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/\(rover)/photos?api_key=KHRJbKdXYnP7bqpiVGHl3u190QVlF07JuqPlJs56&page=\(page)&earth_date=\(date)"
-            repArr.append(repStringURL)
+            
+            if repArr.contains(repStringURL) == false {
+                repArr.append(repStringURL)
+            }
+            
         }
         if url != nil {
             repStringURL = url!

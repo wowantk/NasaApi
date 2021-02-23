@@ -38,10 +38,12 @@ extension ViewRepController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         fvc?.url = repArr[indexPath.row]
         fvc?.requestPage = 1
-        self.dismiss(animated: true, completion: nil)
         DispatchQueue.main.async {
-            self.fvc?.tablleView.reloadData()
+            self.fvc?.getAllData()
+            
         }
+        self.dismiss(animated: true, completion: nil)
+        
     }
 }
 

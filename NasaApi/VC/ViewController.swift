@@ -117,7 +117,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         refreshController = UIRefreshControl()
         refreshController?.addTarget(self, action: #selector(getAllData), for: .valueChanged)
-        
+        refreshController?.addTarget(self, action: #selector(setPage), for: .valueChanged)
         tablleView.refreshControl = self.refreshController
         
         
@@ -153,6 +153,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         refreshController?.beginRefreshing()
         
         
+        
         self.getAllData()
     }
     
@@ -168,13 +169,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     @objc private func saveDate() {
-        self.dataSource = [Photo]()
-        self.requestPage = 1
-        if roverLabel.text != nil {
-            cameraField.isUserInteractionEnabled = true
-            dateField.isUserInteractionEnabled = true
-        }
+        cameraField.isUserInteractionEnabled = true
+        dateField.isUserInteractionEnabled = true
         self.roverField.resignFirstResponder()
+        
+    }
+    
+    
+    @objc private func setPage() {
+        self.requestPage = 1
         
     }
     
@@ -197,12 +200,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @objc private func saveCameraDate() {
-        self.dataSource = [Photo]()
-        self.requestPage = 1
-        if dateLabel.text != nil {
+        if dateLabel.text != "" {
             rover = roverLabel.text ?? ""
             camera = cameraLabel.text ?? ""
             self.date = dateLabel.text ?? ""
+            self.dataSource = [Photo]()
+            self.requestPage = 1
+            self.url = nil
             getAllData()
             cameraField.resignFirstResponder()
         }else{
@@ -216,16 +220,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     @objc private func dateSaveDate() {
-        self.dataSource = [Photo]()
-        self.requestPage = 1
         guard let date = datePicker?.date else {return}
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "yyyy-MM-dd"
         dateLabel.text  = formatter1.string(from: date)
-        if cameraLabel.text != nil {
+        if cameraLabel.text != "" {
             rover = roverLabel.text ?? ""
             camera = cameraLabel.text ?? ""
             self.date = dateLabel.text ?? ""
+            self.dataSource = [Photo]()
+            self.requestPage = 1
+            self.url = nil
             getAllData()
             dateField.resignFirstResponder()
         }
@@ -248,7 +253,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     
-    @objc private func getAllData(){
+    @objc  func getAllData(){
         ReposisotiryObject.performRequest(rover: rover, camera: camera, date: date, url:url,page: requestPage) { [weak self] (isSucces, response) in
             guard let self  = self else {return}
             if isSucces{
